@@ -61,7 +61,6 @@ class Student:
         response = requests.get(
             f"https://company.com/course-schedule/{self._last_name}/{self._first_name}"
             )
-        
         if response.ok:
             return response.text
         else:
