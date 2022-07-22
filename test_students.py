@@ -1,6 +1,8 @@
 import unittest
-from student import Student
+from unittest.mock import patch
+from student import Student  # imports the Student() function from student.py
 from datetime import timedelta
+
 
 class TestStudent(unittest.TestCase):
 
@@ -60,6 +62,33 @@ class TestStudent(unittest.TestCase):
         self.student.apply_extension(7)
         # test whether student’s end_date is equal to the old date plus a timedelta of seven days.
         self.assertEqual(self.student.end_date, old_end_date + timedelta(days=7))
+
+
+    def test_course_schedule_success(self):
+        """ 
+        To mock a successful request to an API server.
+        The patch method we've imported can be used as a decorator 
+        or a context manager.
+        A decorator lets you augment or replace a function or a class when it is defined.
+        A context manager lets you abstract away the end of a function.
+        """
+        print("test_course_schedule_success")
+        with patch("student.requests.get") as mocked_get: # set context manager
+            mocked_get.return_value.ok = True # to set  values in our mocked_get object as if it were a successful request
+            mocked_get.return_value.text = "Success" # mocks the response text as "success"
+
+            schedule = self.student.course_schedule()  # storing students schedule into a variable schedule
+            self.assertEqual(schedule, "Success")  # assertEqual to compare the variable “schedule” with the string “Success”
+
+
+    def test_course_schedule_failed(self):
+        """ To mock a failed request to an API server """
+        print("test_course_schedule_failed")
+        with patch("student.requests.get") as mocked_get:
+            mocked_get.return_value.ok = False
+
+            schedule = self.student.course_schedule()
+            self.assertEqual(schedule, "Something went wrong with the request to the server!") # matches the else response in the function
 
 
 if __name__ == '__main__':

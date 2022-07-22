@@ -1,8 +1,9 @@
 """
 Importing methods from the relevant modules
 """
-import datetime
+# import datetime
 from datetime import date, timedelta
+import requests
 
 
 class Student:
@@ -48,6 +49,23 @@ class Student:
         timedelta() used for calculating differences in dates
         """
         self.end_date = self.end_date + timedelta(days=days_to_increment)
+
+
+    def course_schedule(self):
+        """
+        Makes a request to our fictional API service
+        We get a student's course schedule using requests.get
+        Store it in a variable called response,  and 
+        Return either the response text or an error message.
+        """
+        response = requests.get(
+            f"https://company.com/course-schedule/{self._last_name}/{self._first_name}"
+            )
+        
+        if response.ok:
+            return response.text
+        else:
+            return "Something went wrong with the request to the server!"
 
 
 # ------------ Test code
