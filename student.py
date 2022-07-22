@@ -1,4 +1,7 @@
-""" Importing methods from the relevant modules """
+"""
+Importing methods from the relevant modules
+"""
+import datetime
 from datetime import date, timedelta
 
 
@@ -19,9 +22,10 @@ class Student:
         self.end_date = date.today() + timedelta(days=365)
         self.attention_list = False
 
-        @property  # method to get data only
-        def full_name(self):
-            return f"{self._first_name} {self._last_name}"
+    @property  # method to get data only
+    def full_name(self):
+        return f"{self._first_name} {self._last_name}"
+
 
 
 

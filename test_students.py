@@ -8,4 +8,10 @@ class TestStudent(unittest.TestCase):
         self.assertEqual(student.full_name, "John Doe")
 
 if __name__ == '__main__':
+    """
+    Not required, however placed in anyway:
+    Will run the file without having to specify the Unittest module.
+    Will only run unittest.main() if it is run as the 'main' file. 
+    Will not run if test_student.py is run as an 'import'. 
+    """
     unittest.main()
