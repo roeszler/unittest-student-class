@@ -40,6 +40,15 @@ class Student:
         # return lower(f"{self._first_name}.{self._last_name}@email.com")
         return f"{self._first_name.lower()}.{self._last_name.lower()}@email.com"
 
+    
+    def apply_extension(self, days_to_increment):
+        """
+        Updates the end_date by adding days to it.
+        Syntax : datetime.timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0) Returns : Date
+        timedelta() used for calculating differences in dates
+        """
+        self.end_date = self.end_date + timedelta(days=days_to_increment)
+
 
 # ------------ Test code
 
