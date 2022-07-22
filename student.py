@@ -22,11 +22,23 @@ class Student:
         self.end_date = date.today() + timedelta(days=365)
         self.attention_list = False
 
-    @property  # method to get data only
+    @property  # read only method to get data only
     def full_name(self):
         return f"{self._first_name} {self._last_name}"
+    
+
+    def alert_behaviour(self):
+        """ to modify the attention_list property (not return a value) """
+        self.attention_list = True
 
 
+    @property # read only method
+    def email(self):
+        """
+        read only method to return email 
+        """
+        # return lower(f"{self._first_name}.{self._last_name}@email.com")
+        return f"{self._first_name.lower()}.{self._last_name.lower()}@email.com"
 
 
 # ------------ Test code
