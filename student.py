@@ -1,7 +1,5 @@
-"""
-Importing methods from the relevant modules
-"""
-from datetime import date, timedelta, datetime
+""" Importing methods from the relevant modules """
+from datetime import date, timedelta
 
 
 class Student:
